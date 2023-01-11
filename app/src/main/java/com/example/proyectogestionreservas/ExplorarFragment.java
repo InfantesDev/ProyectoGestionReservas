@@ -15,8 +15,11 @@ import android.view.ViewGroup;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 /**
  * Fragment Explorar Recycler View vertical
+ * Se hace array con datos de las parcelas y se pasa al adapter
  */
 public class ExplorarFragment extends Fragment {
 
@@ -31,11 +34,24 @@ public class ExplorarFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_explorar, container, false);
 
+        //Crear Arraylist
+        ArrayList<Parcela> parcelas = datos_parcela();
         //Crear RecyclerView
         recyclerView=view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new RandomNumListAdapter(1234));
+        recyclerView.setAdapter(new RandomNumListAdapter(parcelas));
         return view;
+    }
+
+    public ArrayList<Parcela> datos_parcela(){
+        ArrayList<Parcela> parcelas = new ArrayList<>();
+        parcelas.add(new Parcela("Parela 1", R.drawable.ic_search_foreground));
+        parcelas.add(new Parcela("Parela 2", R.drawable.ic_search_foreground));
+        parcelas.add(new Parcela("Parela 3", R.drawable.ic_launcher_foreground));
+        parcelas.add(new Parcela("Parela 4", R.drawable.ic_profile_foreground));
+        parcelas.add(new Parcela("Parela 5", R.drawable.ic_task_foreground));
+        parcelas.add(new Parcela("Parela 6", R.drawable.ic_task_foreground));
+        return parcelas;
     }
 }
