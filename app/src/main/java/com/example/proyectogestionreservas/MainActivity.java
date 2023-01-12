@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * Login Activit
+ * Login Activity
  * De esta actividad podemos pasar a registro y a menu activity donde estan los fragments
  */
 public class MainActivity extends AppCompatActivity {

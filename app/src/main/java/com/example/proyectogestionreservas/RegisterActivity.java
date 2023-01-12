@@ -7,11 +7,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectogestionreservas.databinding.ActivityRegisterBinding;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText user, pass, passOtra;
     Button btnRegistro, btnRegistroToLogin;
+    ActivityRegisterBinding binding;
 
     public boolean validacion(){
         boolean valid = true;
@@ -47,7 +50,10 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        binding=ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        //binding.nom xml
 
         user=findViewById(R.id.editUserRegister);
         pass=findViewById(R.id.editPasswordRegister);
