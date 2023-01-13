@@ -1,6 +1,7 @@
 package com.example.proyectogestionreservas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectogestionreservas.data.AppDataBase;
+import com.example.proyectogestionreservas.data.dao.UsuarioDao;
+import com.example.proyectogestionreservas.databinding.ActivityMainBinding;
+
 /**
  * Login Activity
  * De esta actividad podemos pasar a registro y a menu activity donde estan los fragments
@@ -16,6 +21,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     EditText user, pass;
     Button btnLogin, btnDescLogin;
+    ActivityMainBinding binding;
+    AppDataBase myDb;
+    UsuarioDao usuarioDao;
 
     public boolean validacion(){
         boolean valid = true;
@@ -50,13 +58,44 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot()); //R.layout.activity_main
+        myDb= Room.databaseBuilder(this, AppDataBase.class, "hoteldb")
+                .allowMainThreadQueries().fallbackToDestructiveMigration().build();
+        usuarioDao= myDb.usuarioDao();
 
+        btnLogin=findViewById(R.id.btnLogin);
+        btnDescLogin=findViewById(R.id.btnDescLogin);
+
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nombreUsuario=binding.editUser.getText().toString();
+                String passUsuario=binding.editPassword.getText().toString();
+                if (usuarioDao.login(nombreUsuario,passUsuario)){
+                    startActivity(new Intent(MainActivity.this, MenuActivity.class));
+                } else {
+                    Toast.makeText(MainActivity.this, "Nombre Usuario o Contraseña Fallida", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        binding.btnDescLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+            }
+        });
+
+        /*
         user=findViewById(R.id.editUser);
         pass=findViewById(R.id.editPassword);
         btnLogin=findViewById(R.id.btnLogin);
         btnDescLogin=findViewById(R.id.btnDescLogin);
 
+         */
+
+        /*
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,11 +110,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
         btnDescLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mostrarRegisterActivity();
             }
         });
+         */
     }
 }

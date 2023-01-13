@@ -3,7 +3,9 @@ package com.example.proyectogestionreservas;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectogestionreservas.viewmodel.HabitacionViewModel;
+import com.example.proyectogestionreservas.viewmodel.UsuarioViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -25,6 +29,8 @@ public class ExplorarFragment extends Fragment {
 
     //RecyclerView añadido
     private RecyclerView recyclerView;
+    //Mostrar datos
+    HabitacionViewModel hVM;
 
     public ExplorarFragment() {
     }
@@ -53,5 +59,13 @@ public class ExplorarFragment extends Fragment {
         parcelas.add(new Parcela("Parela 5", R.drawable.ic_task_foreground));
         parcelas.add(new Parcela("Parela 6", R.drawable.ic_task_foreground));
         return parcelas;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //view model sin factory
+        //hVM=new ViewModelProvider()
+        hVM=new ViewModelProvider(this).get(HabitacionViewModel.class);
     }
 }

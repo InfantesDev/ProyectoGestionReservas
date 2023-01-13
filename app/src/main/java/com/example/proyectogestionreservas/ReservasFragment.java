@@ -27,7 +27,7 @@ public class ReservasFragment extends Fragment {
 
         //Crear Arraylist
         ArrayList<Parcela> parcelas = datos_parcela();
-        //Crear RecyclerView
+        //Estructura RecyclerView
         recyclerView=view.findViewById(R.id.recyclerViewMisReservas);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -35,6 +35,7 @@ public class ReservasFragment extends Fragment {
         return view;
     }
 
+    //TODO Recycle con todas la habitaciones
     public ArrayList<Parcela> datos_parcela(){
         ArrayList<Parcela> parcelas = new ArrayList<>();
         parcelas.add(new Parcela("Parela 1", R.drawable.ic_search_foreground));
