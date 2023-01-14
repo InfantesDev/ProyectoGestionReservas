@@ -10,12 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectogestionreservas.data.entities.Habitacion;
+import com.example.proyectogestionreservas.viewmodel.HabitacionViewModel;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReservasFragment extends Fragment {
 
     //RecyclerView añadido
     private RecyclerView recyclerView;
+
+    //ViewModel Habitaciones
+    private HabitacionViewModel hVM;
 
     public ReservasFragment() {
     }
@@ -27,15 +34,23 @@ public class ReservasFragment extends Fragment {
 
         //Crear Arraylist
         ArrayList<Parcela> parcelas = datos_parcela();
+        //Crear List
+        //List<Habitacion> habitaciones=datosListHabitacion();
         //Estructura RecyclerView
         recyclerView=view.findViewById(R.id.recyclerViewMisReservas);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new RandomNumListAdapter(parcelas));
+        //Pasar datos al adapter
+        recyclerView.setAdapter(new RandomListAdapter(parcelas));
         return view;
     }
 
     //TODO Recycle con todas la habitaciones
+    public List<Habitacion> datosListHabitacion(){
+        List<Habitacion> listadoHabitaciones= new ArrayList<>();
+        listadoHabitaciones=hVM.obtenerHabitaciones().getValue();
+        return listadoHabitaciones;
+    }
     public ArrayList<Parcela> datos_parcela(){
         ArrayList<Parcela> parcelas = new ArrayList<>();
         parcelas.add(new Parcela("Parela 1", R.drawable.ic_search_foreground));

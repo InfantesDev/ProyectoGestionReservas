@@ -3,9 +3,7 @@ package com.example.proyectogestionreservas.data.repositories;
 import android.content.Context;
 
 import com.example.proyectogestionreservas.data.AppDataBase;
-import com.example.proyectogestionreservas.data.dao.HabitacionDao;
 import com.example.proyectogestionreservas.data.dao.UsuarioDao;
-import com.example.proyectogestionreservas.data.entities.Habitacion;
 import com.example.proyectogestionreservas.data.entities.Usuario;
 
 import java.util.List;

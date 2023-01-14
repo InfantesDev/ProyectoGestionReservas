@@ -2,6 +2,8 @@ package com.example.proyectogestionreservas;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.proyectogestionreservas.databinding.ActivityMainBinding;
 import com.example.proyectogestionreservas.databinding.ActivityMenuBinding;
@@ -24,6 +26,14 @@ public class MenuActivity extends AppCompatActivity {
         binding=ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new ExplorarFragment());
+
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MenuActivity.this, "CLICK!!! Fragment", Toast.LENGTH_SHORT).show();
+                replaceFragment(new AnyadirHabitacionFragment());
+            }
+        });
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){

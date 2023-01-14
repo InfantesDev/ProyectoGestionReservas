@@ -7,10 +7,14 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "habitaciones")
 public class Habitacion {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name ="id")
-    String id;
+    @ColumnInfo(name ="idhabitacion")
+    public
+    int idHabitacion;
+
+    @ColumnInfo(name = "nombre")
+    String nombre;
 
     @ColumnInfo(name ="descrip")
     String descrip;
@@ -21,20 +25,28 @@ public class Habitacion {
     @ColumnInfo(name ="imagen")
     int imagen;
 
-    public Habitacion(@NonNull String id, String descrip, double precio, int imagen) {
-        this.id = id;
+    public Habitacion(String nombre, String descrip, double precio, int imagen) {
+        this.nombre=nombre;
         this.descrip = descrip;
         this.precio = precio;
         this.imagen = imagen;
     }
 
     @NonNull
-    public String getId() {
-        return id;
+    public int getIdHabitacion() {
+        return idHabitacion;
     }
 
-    public void setId(@NonNull String id) {
-        this.id = id;
+    public void setIdHabitacion(@NonNull int idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescrip() {

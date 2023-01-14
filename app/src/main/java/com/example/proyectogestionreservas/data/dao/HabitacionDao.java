@@ -16,19 +16,16 @@ public interface HabitacionDao {
     @Insert
     public void insert(Habitacion habitacion);
 
-    @Insert
-    public void insertBothUsers(Habitacion hab1, Habitacion hab2);
-
     @Update
     public void update(Habitacion habitacion);
 
     @Delete
     public void delete(Habitacion habitacion);
 
-    @Query("SELECT * FROM habitaciones ORDER BY id")
+    @Query("SELECT * FROM habitaciones ORDER BY idhabitacion")
     public LiveData<List<Habitacion>> getAll();
 
-    @Query("SELECT * FROM habitaciones WHERE id = :miId")
+    @Query("SELECT * FROM habitaciones WHERE idhabitacion = :miId")
     public Habitacion getOne(String miId);
 
     @Query("SELECT * FROM habitaciones WHERE precio BETWEEN :minPrecio AND :maxPrecio")

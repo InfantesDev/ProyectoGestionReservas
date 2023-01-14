@@ -19,9 +19,6 @@ public interface UsuarioDao {
     @Delete
     public void delete(Usuario usuario);
 
-    @Query("SELECT EXISTS (SELECT * from usuario where nombreUsuario=:nombreUsuario)")
-    boolean is_taken(String nombreUsuario);
-
     @Query("SELECT EXISTS (SELECT * from usuario where nombreUsuario=:nombreUsuario AND password=:password)")
     boolean login(String nombreUsuario,String password);
 

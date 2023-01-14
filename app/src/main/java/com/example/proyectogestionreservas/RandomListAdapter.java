@@ -3,21 +3,22 @@ package com.example.proyectogestionreservas;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.proyectogestionreservas.data.entities.Habitacion;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RandomNumListAdapter extends RecyclerView.Adapter<RecyclerViewHolder>{
+public class RandomListAdapter extends RecyclerView.Adapter<RecyclerViewHolder>{
     ArrayList<Parcela> parcelas= new ArrayList<>();
-    //Refactor
-    private Random random;
+    //List<Habitacion> habitaciones = new ArrayList<>();
 
-    public RandomNumListAdapter(ArrayList<Parcela> parcelas) {
+    public RandomListAdapter(ArrayList<Parcela> parcelas) {
         this.parcelas=parcelas;
     }
 
