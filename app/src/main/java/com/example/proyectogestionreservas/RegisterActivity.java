@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectogestionreservas.data.AppDataBase;
@@ -25,7 +26,8 @@ import androidx.room.Room;
  */
 public class RegisterActivity extends AppCompatActivity {
     EditText user, pass, passOtra;
-    Button btnRegistro, btnRegistroToLogin;
+    Button btnRegistro;
+    TextView btnRegistroToLogin;
     ActivityRegisterBinding binding;
     AppDataBase myDataBase;
     UsuarioDao usuarioDao;
@@ -80,84 +82,14 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
             }
         });
-
-        //Formar de registrar un solo usuario
-        //Registrar Usuario
-        /*
-        binding.editUserRegister.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String nombreUsuarioEdit=editable.toString();
-                if (usuarioDao.is_taken(nombreUsuarioEdit)){
-                    isPermitido=false;
-                    Toast.makeText(RegisterActivity.this, "Usuario Cogido", Toast.LENGTH_SHORT).show();
-                } else {
-                    isPermitido=true;
-                }
-            }
-        });
-        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isPermitido){
-                    Usuario usuario = new Usuario(0, binding.editUserRegister.getText().toString(),
-                            binding.editPasswordRegister.getText().toString());
-                    usuarioDao.insertUsuario(usuario);
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Nombre Usuario Cogido", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        binding.btnRegistroToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-            }
-        });
-
-         */
-        /*
-        btnRegistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (validacion()){
-                    //Pasamos a una nueva vista
-                    mostrarActivityLoginConDatos();
-                    Toast.makeText(getApplicationContext(), "Perfecto", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    //salimos break
-                    Toast.makeText(getApplicationContext(), "Error contraseña!!", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-         */
-        /*
-        btnRegistroToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mostrarActivityLoginSinDatos();
-            }
-        });
-
-         */
     }
     //Forma de guardar mas de un usuario
     //Guardar Usuario
+    //TODO Hacer validacion
     public void guardarUsuario(){
         String nombreUsuario=user.getText().toString();
         String passwordUsuario=pass.getText().toString();
         usuarioVM.guardarUsuario(new Usuario(nombreUsuario, passwordUsuario));
+        Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
     }
 }

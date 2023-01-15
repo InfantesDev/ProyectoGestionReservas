@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectogestionreservas.data.AppDataBase;
@@ -20,7 +21,8 @@ import com.example.proyectogestionreservas.databinding.ActivityMainBinding;
  */
 public class MainActivity extends AppCompatActivity {
     EditText user, pass;
-    Button btnLogin, btnDescLogin;
+    Button btnLogin;
+    TextView btnDescLogin;
     ActivityMainBinding binding;
     AppDataBase myDb;
     UsuarioDao usuarioDao;
@@ -86,39 +88,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             }
         });
-
-        /*
-        user=findViewById(R.id.editUser);
-        pass=findViewById(R.id.editPassword);
-        btnLogin=findViewById(R.id.btnLogin);
-        btnDescLogin=findViewById(R.id.btnDescLogin);
-
-         */
-
-        /*
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (validacion()){
-                    //Pasamos a la actividad menu
-                    mostrarMenuActivity();
-                } else {
-                    //TODO saltar error
-                    //Si error
-                    mostrarMenuActivity();
-                    Toast.makeText(getApplicationContext(), "Error contraseña!!", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-
-
-        btnDescLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mostrarRegisterActivity();
-            }
-        });
-         */
     }
 }
