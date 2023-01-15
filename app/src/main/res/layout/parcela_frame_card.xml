@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imagen"
@@ -22,6 +23,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         tools:text="Parcela Numero 2"
+        android:textColor="@color/black"
         android:layout_marginStart="120dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
