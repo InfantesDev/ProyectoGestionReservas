@@ -59,8 +59,152 @@
                     android:rating="4.5"
                     android:stepSize="0.5"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/numBanyoHabitacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="1 "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/banyoHabitacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Baños"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/numCamaHabitacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/camaHabitacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text=" Camas"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/sobreHabitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Sobre La Habitacion"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/contenidoHabitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-black"
+                android:alpha="0.5"
+                android:text="Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum
+Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum
+Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/masHabitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Sobre el hotel"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/mas1Habitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-black"
+                android:text="Restaurante"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/mas2Habitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-black"
+                android:text="Entorno Rural"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/mas3Habitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-black"
+                android:text="Piscina y Sala de Spa"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/mas4Habitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-black"
+                android:text="Apto para niños"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+            <Button
+                android:id="@+id/btnAbrirMapaHabi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.Button"
+                android:background="@drawable/btn_blanco"
+                android:textColor="#00FF00"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginTop="40dp"
+                android:text="Localizacion HotelRural"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <Button
+                android:id="@+id/btnRealizarLlamadasHabi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.Button"
+                android:background="@drawable/btn_blanco"
+                android:textColor="#00FF00"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginTop="40dp"
+                android:text="Realizar Llamada"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"/>
         </LinearLayout>
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

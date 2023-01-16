@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,37 +25,47 @@ import java.util.List;
  * Fragment Explorar Recycler View vertical
  * Se hace array con datos de las parcelas y se pasa al adapter
  */
-public class ExplorarFragment extends Fragment {
-
+public class ExplorarFragment extends Fragment implements LifecycleOwner{
+    ExplorarFragment context;
     //RecyclerView añadido
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
     //Mostrar datos
     HabitacionViewModel hVM;
+    //Listado
+    List<Habitacion> habitaciones;
+    RandomListAdapter recyclerViewAdapter;
 
     public ExplorarFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //view model sin factory
+        //hVM=new ViewModelProvider()
+        //hVM=new ViewModelProvider(this).get(HabitacionViewModel.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_explorar, container, false);
-
-        //Crear Arraylist
-        //ArrayList<Parcela> parcelas = datos_parcela();
-        List<Habitacion> habitacions=datosListHabitacion();
+        context=this;
         //Crear RecyclerView
         recyclerView=view.findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new RandomListAdapter(habitacions));
+        recyclerViewAdapter=new RandomListAdapter();
+        recyclerView.setAdapter(recyclerViewAdapter);
+        hVM=new ViewModelProvider(context).get(HabitacionViewModel.class);
+        hVM.obtenerHabitaciones().observe(getViewLifecycleOwner(),actualizarListHabitacionObserver);
         return view;
     }
 
-    public List<Habitacion> datosListHabitacion(){
-        List<Habitacion> listadoHabitaciones= new ArrayList<>();
-        listadoHabitaciones=hVM.obtenerHabitaciones().getValue();
-        return listadoHabitaciones;
-    }
+    Observer<List<Habitacion>> actualizarListHabitacionObserver=new Observer<List<Habitacion>>() {
+        @Override
+        public void onChanged(List<Habitacion> habitacions) {
+            recyclerViewAdapter.actualizarListaUsuario(habitacions);
+        }
+    };
 
     public ArrayList<Parcela> datos_parcela(){
         ArrayList<Parcela> parcelas = new ArrayList<>();
@@ -64,13 +76,5 @@ public class ExplorarFragment extends Fragment {
         parcelas.add(new Parcela("Parela 5", R.drawable.ic_task_foreground));
         parcelas.add(new Parcela("Parela 6", R.drawable.ic_task_foreground));
         return parcelas;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //view model sin factory
-        //hVM=new ViewModelProvider()
-        hVM=new ViewModelProvider(this).get(HabitacionViewModel.class);
     }
 }

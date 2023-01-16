@@ -36,6 +36,7 @@ public class ReservasFragment extends Fragment {
         //Crear Arraylist
         //ArrayList<Parcela> parcelas = datos_parcela();
         //Crear List
+        /*
         List<Habitacion> habitaciones=datosListHabitacion();
         //Estructura RecyclerView
         recyclerView=view.findViewById(R.id.recyclerViewMisReservas);
@@ -43,6 +44,8 @@ public class ReservasFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         //Pasar datos al adapter
         recyclerView.setAdapter(new RandomListAdapter(habitaciones));
+
+         */
         return view;
     }
 

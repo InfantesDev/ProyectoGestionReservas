@@ -1,9 +1,13 @@
 package com.example.proyectogestionreservas;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectogestionreservas.data.entities.Habitacion;
@@ -15,14 +19,18 @@ import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStore;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RandomListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
-    List<Habitacion> habitaciones = new ArrayList<>();
+public class RandomListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private List<Habitacion> habitaciones;
     HabitacionViewModel hVM;
 
-    public RandomListAdapter(List<Habitacion> habitaciones) {
-        this.habitaciones=habitaciones;
+    public RandomListAdapter() {
+        this.habitaciones=new ArrayList<Habitacion>();
     }
 
     @Override
@@ -32,11 +40,48 @@ public class RandomListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> 
 
     @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType,parent,false);
-        return new RecyclerViewHolder(view);
+        return new RecyclerViewViewHolder(view);
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Habitacion habitacion = habitaciones.get(position);
+        RecyclerViewViewHolder viewHolder=(RecyclerViewViewHolder) holder;
+        viewHolder.getView().setText(habitacion.getNombre());
+        viewHolder.getImageView().setImageResource(habitacion.getImagen());
+        //viewHolder.textView.setText(habitacion.getNombre());
+        //viewHolder.imageView.setImageResource(habitacion.getImagen());
+    }
+
+    @Override
+    public int getItemCount() {
+        return habitaciones.size();
+    }
+
+    public void actualizarListaUsuario(final List<Habitacion> habitacionListado){
+        this.habitaciones.clear();
+        this.habitaciones=habitacionListado;
+        notifyDataSetChanged();
+    }
+
+    static class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
+        TextView textView;
+        public RecyclerViewViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.imagen);
+            textView = itemView.findViewById(R.id.randomText);
+        }
+        public TextView getView(){
+            return textView;
+        }
+        public ImageView getImageView(){
+            return imageView;
+        }
+    }
+    /*
     //TODO Listar Habitaciones
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, int position) {
@@ -48,11 +93,6 @@ public class RandomListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> 
                 holder.getImageView().setImageResource(habitacione.getImagen());
             }
         }
-        /*
-        holder.getView().setText(habitaciones.get(1).getNombre());
-        holder.getImageView().setImageResource(habitaciones.get(1).getImagen());
-
-         */
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,8 +102,5 @@ public class RandomListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> 
         });
     }
 
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
+     */
 }

@@ -22,7 +22,6 @@ public class HabitacionRepository {
         listado_habitaciones = habitacionDao.getAll();
     }
     //Se añade un método por cada operación del DAO que deseemos realizar
-
     public void insert (Habitacion habitacion){
         AppDataBase.dbExecutor.execute(
                 ()->habitacionDao.insert(habitacion)
@@ -33,14 +32,16 @@ public class HabitacionRepository {
                 ()->habitacionDao.delete(habitacion)
         );
     }
+    //Todas las habitaciones
     public LiveData<List<Habitacion>> getAllR(){
         return listado_habitaciones;
     }
 
-    /*public Habitacion getOne(String miId){
+    //Obtinene una habitacion
+    public Habitacion getOne(String miId){
         AppDataBase.dbExecutor.execute(
                 ()->{mihabitacion=habitacionDao.getOne(miId);}
         );
         return mihabitacion;
-    }*/
+    }
 }
