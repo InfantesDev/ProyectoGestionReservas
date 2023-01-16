@@ -3,6 +3,7 @@ package com.example.proyectogestionreservas;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,15 +34,15 @@ public class ReservasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_reservas, container, false);
 
         //Crear Arraylist
-        ArrayList<Parcela> parcelas = datos_parcela();
+        //ArrayList<Parcela> parcelas = datos_parcela();
         //Crear List
-        //List<Habitacion> habitaciones=datosListHabitacion();
+        List<Habitacion> habitaciones=datosListHabitacion();
         //Estructura RecyclerView
         recyclerView=view.findViewById(R.id.recyclerViewMisReservas);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         //Pasar datos al adapter
-        recyclerView.setAdapter(new RandomListAdapter(parcelas));
+        recyclerView.setAdapter(new RandomListAdapter(habitaciones));
         return view;
     }
 

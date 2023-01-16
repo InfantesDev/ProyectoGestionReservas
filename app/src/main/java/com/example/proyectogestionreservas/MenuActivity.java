@@ -27,6 +27,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new ExplorarFragment());
 
+        /*
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +35,7 @@ public class MenuActivity extends AppCompatActivity {
                 replaceFragment(new AnyadirHabitacionFragment());
             }
         });
+         */
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){

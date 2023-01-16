@@ -8,13 +8,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectogestionreservas.data.entities.Habitacion;
 import com.example.proyectogestionreservas.viewmodel.HabitacionViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fragment Explorar Recycler View vertical
@@ -36,13 +39,20 @@ public class ExplorarFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_explorar, container, false);
 
         //Crear Arraylist
-        ArrayList<Parcela> parcelas = datos_parcela();
+        //ArrayList<Parcela> parcelas = datos_parcela();
+        List<Habitacion> habitacions=datosListHabitacion();
         //Crear RecyclerView
         recyclerView=view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new RandomListAdapter(parcelas));
+        recyclerView.setAdapter(new RandomListAdapter(habitacions));
         return view;
+    }
+
+    public List<Habitacion> datosListHabitacion(){
+        List<Habitacion> listadoHabitaciones= new ArrayList<>();
+        listadoHabitaciones=hVM.obtenerHabitaciones().getValue();
+        return listadoHabitaciones;
     }
 
     public ArrayList<Parcela> datos_parcela(){

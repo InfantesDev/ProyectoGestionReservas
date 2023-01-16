@@ -13,7 +13,7 @@ import androidx.lifecycle.LiveData;
 
 public class HabitacionViewModel extends AndroidViewModel {
     private final HabitacionRepository hRepo;
-    private final LiveData<List<Habitacion>> listadoHabitaciones;
+    private LiveData<List<Habitacion>> listadoHabitaciones;
 
     public HabitacionViewModel(@NonNull Application application) {
         super(application);
