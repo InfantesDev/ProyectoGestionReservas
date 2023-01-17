@@ -1,5 +1,6 @@
 package com.example.proyectogestionreservas;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -7,13 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.proyectogestionreservas.data.entities.Habitacion;
 import com.example.proyectogestionreservas.viewmodel.HabitacionViewModel;
@@ -53,7 +53,14 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
         context=this;
         //Crear RecyclerView
         recyclerView=view.findViewById(R.id.recyclerView);
-        recyclerViewAdapter=new RandomListAdapter();
+        recyclerViewAdapter=new RandomListAdapter(new RandomListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Habitacion habitacion) {
+                Intent intent = new Intent(getActivity(), MostrarActivity.class);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+            }
+        });
         recyclerView.setAdapter(recyclerViewAdapter);
         hVM=new ViewModelProvider(context).get(HabitacionViewModel.class);
         hVM.obtenerHabitaciones().observe(getViewLifecycleOwner(),actualizarListHabitacionObserver);
@@ -66,6 +73,11 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
             recyclerViewAdapter.actualizarListaUsuario(habitacions);
         }
     };
+
+    public void goToAttract(View v) {
+        Intent intent = new Intent(getActivity(), MostrarActivity.class);
+        startActivity(intent);
+    }
 
     public ArrayList<Parcela> datos_parcela(){
         ArrayList<Parcela> parcelas = new ArrayList<>();

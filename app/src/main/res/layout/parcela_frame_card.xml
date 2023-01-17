@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/randomText"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         tools:text="Parcela Numero 2"
         android:textColor="@color/black"

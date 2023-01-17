@@ -1,7 +1,5 @@
 package com.example.proyectogestionreservas;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,22 +13,23 @@ import com.example.proyectogestionreservas.viewmodel.HabitacionViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RandomListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    public interface OnItemClickListener {
+        void onItemClick(Habitacion habitacion);
+    }
+    private final OnItemClickListener listener;
     private List<Habitacion> habitaciones;
+
     HabitacionViewModel hVM;
 
-    public RandomListAdapter() {
+    public RandomListAdapter(OnItemClickListener listener) {
         this.habitaciones=new ArrayList<Habitacion>();
+        this.listener=listener;
     }
 
     @Override
@@ -51,8 +50,7 @@ public class RandomListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         RecyclerViewViewHolder viewHolder=(RecyclerViewViewHolder) holder;
         viewHolder.getView().setText(habitacion.getNombre());
         viewHolder.getImageView().setImageResource(habitacion.getImagen());
-        //viewHolder.textView.setText(habitacion.getNombre());
-        //viewHolder.imageView.setImageResource(habitacion.getImagen());
+        viewHolder.bind(habitacion, listener);
     }
 
     @Override
@@ -74,6 +72,14 @@ public class RandomListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             imageView = itemView.findViewById(R.id.imagen);
             textView = itemView.findViewById(R.id.randomText);
         }
+        public void bind(final Habitacion habitacion, final OnItemClickListener listener){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(habitacion);
+                }
+            });
+        }
         public TextView getView(){
             return textView;
         }
@@ -81,26 +87,5 @@ public class RandomListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             return imageView;
         }
     }
-    /*
-    //TODO Listar Habitaciones
-    @Override
-    public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, int position) {
-        //Pone texto correspondiente
-        if (habitaciones!=null){
-            habitaciones=hVM.obtenerHabitaciones().getValue();
-            for (Habitacion habitacione : habitaciones) {
-                holder.getView().setText(habitacione.getNombre());
-                holder.getImageView().setImageResource(habitacione.getImagen());
-            }
-        }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO Pasar a nueva pantalla Activity
-                Toast.makeText(view.getContext(), "CLICK!!", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-     */
 }
+
