@@ -3,8 +3,10 @@ package com.example.proyectogestionreservas.data;
 import android.content.Context;
 
 import com.example.proyectogestionreservas.data.dao.HabitacionDao;
+import com.example.proyectogestionreservas.data.dao.ReservaDao;
 import com.example.proyectogestionreservas.data.dao.UsuarioDao;
 import com.example.proyectogestionreservas.data.entities.Habitacion;
+import com.example.proyectogestionreservas.data.entities.Reserva;
 import com.example.proyectogestionreservas.data.entities.Usuario;
 
 import java.util.concurrent.ExecutorService;
@@ -14,10 +16,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Habitacion.class, Usuario.class}, version = 1)
+@Database(entities = {Habitacion.class, Usuario.class, Reserva.class}, version = 1)
 public abstract class AppDataBase extends RoomDatabase {
     public abstract HabitacionDao habitacionDao();
     public abstract UsuarioDao usuarioDao();
+    public abstract ReservaDao reservaDao();
 
     private static final String DATABASE_NAME = "hoteldb";
 

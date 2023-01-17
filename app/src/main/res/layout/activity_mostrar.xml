@@ -171,6 +171,61 @@ Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum"
                 android:text="Apto para niños"
                 android:textColor="@color/white"
                 android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/textDescReservas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Si quiere hacer una reserva tendra que dar la fecha inicial y
+la de salida y darle al boton Realizar Reserva"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="17sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <EditText
+                        android:id="@+id/editDateEntrada"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="Fecha Entrada"/>
+                    <EditText
+                        android:id="@+id/editDateSalida"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="Fecha Salida"/>
+                </LinearLayout>
+            <Button
+                android:id="@+id/btnRealizarReserva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.Button"
+                android:background="@drawable/btn_blanco"
+                android:textColor="#00FF00"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginTop="10dp"
+                android:text="Realizar Reserva"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"/>
             <Button
                 android:id="@+id/btnAbrirMapaHabi"
                 android:layout_width="match_parent"

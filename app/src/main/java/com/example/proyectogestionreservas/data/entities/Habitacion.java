@@ -25,11 +25,26 @@ public class Habitacion {
     @ColumnInfo(name ="imagen")
     int imagen;
 
+    @ColumnInfo(name="num_camas")
+    int numCamas;
+
+    @ColumnInfo(name="suite")
+    boolean suite;
+
     public Habitacion(String nombre, String descrip, double precio, int imagen) {
         this.nombre=nombre;
         this.descrip = descrip;
         this.precio = precio;
         this.imagen = imagen;
+    }
+
+    public Habitacion(String nombre, String descrip, double precio, int imagen, int numCamas, boolean suite) {
+        this.nombre=nombre;
+        this.descrip = descrip;
+        this.precio = precio;
+        this.imagen = imagen;
+        this.numCamas=numCamas;
+        this.suite=suite;
     }
 
     @NonNull
@@ -71,5 +86,21 @@ public class Habitacion {
 
     public void setImagen(int imagen) {
         this.imagen = imagen;
+    }
+
+    public int getNumCamas() {
+        return numCamas;
+    }
+
+    public void setNumCamas(int numCamas) {
+        this.numCamas = numCamas;
+    }
+
+    public boolean isSuite() {
+        return suite;
+    }
+
+    public void setSuite(boolean suite) {
+        this.suite = suite;
     }
 }

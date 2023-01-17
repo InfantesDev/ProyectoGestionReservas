@@ -58,7 +58,7 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
             public void onItemClick(Habitacion habitacion) {
                 Intent intent = new Intent(getActivity(), MostrarActivity.class);
                 startActivity(intent);
-                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Click Habitacion", Toast.LENGTH_LONG).show();
             }
         });
         recyclerView.setAdapter(recyclerViewAdapter);
