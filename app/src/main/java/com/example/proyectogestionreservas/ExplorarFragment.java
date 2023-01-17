@@ -41,9 +41,6 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //view model sin factory
-        //hVM=new ViewModelProvider()
-        //hVM=new ViewModelProvider(this).get(HabitacionViewModel.class);
     }
 
     @Override
@@ -73,20 +70,4 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
             recyclerViewAdapter.actualizarListaUsuario(habitacions);
         }
     };
-
-    public void goToAttract(View v) {
-        Intent intent = new Intent(getActivity(), MostrarActivity.class);
-        startActivity(intent);
-    }
-
-    public ArrayList<Parcela> datos_parcela(){
-        ArrayList<Parcela> parcelas = new ArrayList<>();
-        parcelas.add(new Parcela("Parela 1", R.drawable.ic_search_foreground));
-        parcelas.add(new Parcela("Parela 2", R.drawable.ic_search_foreground));
-        parcelas.add(new Parcela("Parela 3", R.drawable.ic_launcher_foreground));
-        parcelas.add(new Parcela("Parela 4", R.drawable.ic_profile_foreground));
-        parcelas.add(new Parcela("Parela 5", R.drawable.ic_task_foreground));
-        parcelas.add(new Parcela("Parela 6", R.drawable.ic_task_foreground));
-        return parcelas;
-    }
 }
