@@ -25,10 +25,10 @@ public class ReservaViewModel extends AndroidViewModel {
         return listadoReservas;
     }
 
-    public void guardarHabitacion(Reserva reserva){
+    public void guardarReserva(Reserva reserva){
         rRepo.insert(reserva);
     }
-    public void eleminarHabitacion(Reserva reserva){
+    public void eleminarReserva(Reserva reserva){
         rRepo.delete(reserva);
     }
 }

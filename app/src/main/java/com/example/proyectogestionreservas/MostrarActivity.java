@@ -1,6 +1,7 @@
 package com.example.proyectogestionreservas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.DatePickerDialog;
 import android.content.ActivityNotFoundException;
@@ -13,12 +14,16 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectogestionreservas.data.entities.Reserva;
+import com.example.proyectogestionreservas.viewmodel.ReservaViewModel;
+
 import java.util.Calendar;
 
 public class MostrarActivity extends AppCompatActivity {
 
     private EditText dateEdtEntrada,dateEdtSalida;
     private Button btnRealizarReserva,btnRealizarLlamada,btnAbrirMapa;
+    ReservaViewModel reservaVM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,10 @@ public class MostrarActivity extends AppCompatActivity {
         btnRealizarReserva=findViewById(R.id.btnRealizarReserva);
         btnRealizarLlamada=findViewById(R.id.btnRealizarLlamadasHabi);
         btnAbrirMapa=findViewById(R.id.btnAbrirMapaHabi);
+        //Inicializar ViewModel/ViewModelProvider
+        ViewModelProvider.AndroidViewModelFactory factory =
+                ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
+        reservaVM=new ViewModelProvider(this, (ViewModelProvider.Factory) factory).get(ReservaViewModel.class);
         //Boton Realizar Llamada
         btnRealizarLlamada.setOnClickListener(view -> realizarLlamada());
         //Boton Abrir Mapa
@@ -37,8 +46,15 @@ public class MostrarActivity extends AppCompatActivity {
         btnRealizarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Inserta Reserva
+                String dEntrada=dateEdtEntrada.getText().toString();
+                String dSalida=dateEdtSalida.getText().toString();
+                if (dEntrada!=null&&dSalida!=null){
+                    reservaVM.guardarReserva(new Reserva(dEntrada,
+                            dSalida,"Nueva Reserva",1,2));
+                }
                 Toast.makeText(MostrarActivity.this,
-                        "Datos Reserva: "+dateEdtEntrada.getText()+" "+dateEdtSalida.getText(),
+                        "Reserva Creada - Datos Reserva: "+dEntrada+" "+dSalida,
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -85,6 +101,12 @@ public class MostrarActivity extends AppCompatActivity {
             }
         });
 
+    }
+    //Insertar Reserva
+    public void guardarReserva(){
+        reservaVM.guardarReserva(new Reserva(dateEdtEntrada.getText().toString(),
+                dateEdtSalida.getText().toString(),"Nueva Reserva",0,0));
+        Toast.makeText(this, "Reserva Creada", Toast.LENGTH_SHORT).show();
     }
     //Realizar Llamada
     public void realizarLlamada(){

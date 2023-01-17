@@ -38,6 +38,7 @@ public class Habitacion {
         this.imagen = imagen;
     }
 
+    /*
     public Habitacion(String nombre, String descrip, double precio, int imagen, int numCamas, boolean suite) {
         this.nombre=nombre;
         this.descrip = descrip;
@@ -46,6 +47,8 @@ public class Habitacion {
         this.numCamas=numCamas;
         this.suite=suite;
     }
+
+     */
 
     @NonNull
     public int getIdHabitacion() {
