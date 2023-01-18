@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.proyectogestionreservas.data.entities.Reserva;
@@ -44,7 +45,13 @@ public class ReservaListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Reserva reserva = reservas.get(position);
         RecyclerViewViewHolder viewHolder=(RecyclerViewViewHolder) holder;
+        viewHolder.getTextTitle().setText("Habitacion Reservada");
+        viewHolder.getTextIdReserva().setText("#"+reserva.getIdReserva());
+        viewHolder.getTextTitleHabi().setText("Habitacion Mediana");
+        viewHolder.getTextHabiNum().setText("#"+reserva.getIdHabitacion());
         viewHolder.getDescripcion().setText(reserva.getObservaciones());
+        viewHolder.getTitleDateEntrada().setText("Fecha Entrada:");
+        viewHolder.getTitleDateSalida().setText("Fecha Salida:");
         viewHolder.getTextDateEntrada().setText(reserva.getFechaEntrada());
         viewHolder.getTextDateSalida().setText(reserva.getFechaSalida());
         viewHolder.bind(reserva, listener);
@@ -62,10 +69,19 @@ public class ReservaListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     static class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
-        TextView descripcion,textDateEntrada,textDateSalida;
+        TextView descripcion,textDateEntrada,textDateSalida,textTitle,
+                textTitleDateEntrada,textTitleDateSalida,textTitleHabi,textHabiNum,textIdReserva;
+        ScrollView mostrarScroll;
         public RecyclerViewViewHolder(@NonNull View itemView) {
             super(itemView);
+            mostrarScroll=itemView.findViewById(R.id.mostrar_scroll);
+            textTitle=itemView.findViewById(R.id.textTitleReserva);
+            textIdReserva=itemView.findViewById(R.id.textTIdReserva);
+            textTitleHabi=itemView.findViewById(R.id.textNumTitleHabi);
+            textHabiNum=itemView.findViewById(R.id.textNumHabi);
             descripcion = itemView.findViewById(R.id.textDescHabi);
+            textTitleDateEntrada=itemView.findViewById(R.id.textFechaTitleEntrada);
+            textTitleDateSalida=itemView.findViewById(R.id.textFechaTitleSalida);
             textDateEntrada=itemView.findViewById(R.id.textFechaTitleEntradaResult);
             textDateSalida=itemView.findViewById(R.id.textFechaTitleSalidaResult);
         }
@@ -77,8 +93,22 @@ public class ReservaListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 }
             });
         }
+        public TextView getTextTitle(){
+            return textTitle;
+        }
+        public TextView getTextIdReserva(){
+            return textIdReserva;
+        }
+        public TextView getTextTitleHabi(){return textTitleHabi;}
+        public TextView getTextHabiNum(){return textHabiNum;}
         public TextView getDescripcion(){
             return descripcion;
+        }
+        public TextView getTitleDateEntrada(){
+            return textTitleDateEntrada;
+        }
+        public TextView getTitleDateSalida(){
+            return textTitleDateSalida;
         }
         public TextView getTextDateEntrada(){return textDateEntrada;}
         public TextView getTextDateSalida(){return textDateSalida;}
