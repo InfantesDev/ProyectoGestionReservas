@@ -24,13 +24,13 @@ import androidx.room.Room;
  * Activity Register Registra Usuarios
  */
 public class RegisterActivity extends AppCompatActivity {
+    //Datos
     EditText user, pass, passOtra, dni, apellido, telefono;
     Button btnRegistro;
     TextView btnRegistroToLogin;
     ActivityRegisterBinding binding;
     UsuarioViewModel usuarioVM;
-
-    //TODO Hacer validacion contraseña segura
+    //Valicadion para contraseña
     public boolean validacion(){
         boolean valid = true;
         String userName = user.getText().toString();
@@ -46,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return valid;
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

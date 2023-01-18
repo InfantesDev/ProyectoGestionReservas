@@ -15,10 +15,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+/**
+ * Activity Para Navegar Entre Fragments
+ */
 public class MenuActivity extends AppCompatActivity {
-
+    //Datos
     ActivityMenuBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,17 +28,7 @@ public class MenuActivity extends AppCompatActivity {
         binding=ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new ExplorarFragment());
-
-        /*
-        binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MenuActivity.this, "CLICK!!! Fragment", Toast.LENGTH_SHORT).show();
-                replaceFragment(new AnyadirHabitacionFragment());
-            }
-        });
-         */
-
+        //Menu Bottom Nav
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.search:
@@ -52,7 +44,7 @@ public class MenuActivity extends AppCompatActivity {
             return true;
         });
     }
-
+    //Remplazar fragment
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

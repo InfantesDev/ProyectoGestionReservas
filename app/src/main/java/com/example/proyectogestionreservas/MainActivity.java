@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 String nombreUsuario=binding.editUser.getText().toString();
                 String passUsuario=binding.editPassword.getText().toString();
                 if (usuarioDao.login(nombreUsuario,passUsuario)){
+                    //TODO Se pueden pasar datos con intent extra
+                    //Pasar datos con intent
                     startActivity(new Intent(MainActivity.this, MenuActivity.class));
                 } else {
                     Toast.makeText(MainActivity.this, "Nombre Usuario o Contraseña Fallida", Toast.LENGTH_SHORT).show();

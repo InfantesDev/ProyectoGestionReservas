@@ -5,127 +5,167 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/ic_imageappregisterlogin_foreground"
     tools:context=".RegisterFragment">
+    <ScrollView
+        android:id="@+id/scrollViewLRegister"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/textTitleRegister1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="50dp"
+                    android:textColor="@color/white"
+                    android:text="Hotel " />
+                <TextView
+                    android:id="@+id/textTitleRegister2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="50dp"
+                    android:textColor="#00FF00"
+                    android:textStyle="bold"
+                    android:text="Rural" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="30dp"
-        android:text="Registro"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistroToLogin"
-        app:layout_constraintStart_toStartOf="@+id/editPasswordAgainRegister"
-        app:layout_constraintTop_toBottomOf="@+id/iconPassARegister" />
+            <TextView
+                android:id="@+id/textDescRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="Hotel Rural es una de las mejores apps para hacer reservas" />
 
-    <Button
-        android:id="@+id/btnRegistroToLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="37dp"
-        android:layout_marginEnd="32dp"
-        android:text="¿Ya estas Registrado?  Volver al Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+            <EditText
+                android:id="@+id/editUserRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Usuario"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
 
-    <EditText
-        android:id="@+id/editUserRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="82dp"
-        android:ems="10"
-        android:hint="Usuario"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/iconUserRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconUserRegister" />
+            <EditText
+                android:id="@+id/editApellidoRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Apellido"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
 
-    <EditText
-        android:id="@+id/editPasswordRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="82dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconPassRegister"
-        app:layout_constraintTop_toTopOf="@+id/iconPassRegister" />
+            <EditText
+                android:id="@+id/editDniRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="DNI"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
 
-    <EditText
-        android:id="@+id/editPasswordAgainRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:ems="10"
-        android:hint="Confirmar Contraseña"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/iconPassARegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconPassARegister" />
+            <EditText
+                android:id="@+id/editTelefonoRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Telefono"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
 
-    <ImageView
-        android:id="@+id/iconUserRegister"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="33dp"
-        android:layout_marginStart="88dp"
-        app:layout_constraintBottom_toTopOf="@+id/iconPassRegister"
-        app:layout_constraintEnd_toStartOf="@+id/editUserRegister"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleRegister"
-        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+            <EditText
+                android:id="@+id/editPasswordRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Contraseña"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
 
-    <ImageView
-        android:id="@+id/iconPassARegister"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="26dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginStart="86dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        app:layout_constraintEnd_toStartOf="@+id/editPasswordAgainRegister"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconPassRegister"
-        app:srcCompat="@android:drawable/ic_partial_secure" />
+            <EditText
+                android:id="@+id/editPasswordAgainRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Repetir Contraseña"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
 
-    <ImageView
-        android:id="@+id/iconPassRegister"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginStart="86dp"
-        app:layout_constraintBottom_toTopOf="@+id/iconPassARegister"
-        app:layout_constraintEnd_toStartOf="@+id/editPasswordRegister"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconUserRegister"
-        app:srcCompat="@android:drawable/ic_partial_secure" />
+            <Button
+                android:id="@+id/btnRegister"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/btn_verde"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:text="Registro" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="39dp"
-        android:layout_marginTop="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/textTitleRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/textTitleRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="37dp"
-        android:text="Registro"
-        app:layout_constraintBottom_toTopOf="@+id/iconUserRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
+            <TextView
+                android:id="@+id/btnRegistroToLogin"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:text="¿Estas registrado?\nIr al Login" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
