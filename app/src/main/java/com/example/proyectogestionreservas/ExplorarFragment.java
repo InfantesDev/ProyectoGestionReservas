@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Fragment Explorar Recycler View vertical
- * Se hace array con datos de las parcelas y se pasa al adapter
+ * Fragment Explorar Recycler View vertical con todas las habitaciones disponibles
  */
 public class ExplorarFragment extends Fragment implements LifecycleOwner{
     ExplorarFragment context;
@@ -34,7 +33,7 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
     //Listado
     List<Habitacion> habitaciones;
     RandomListAdapter recyclerViewAdapter;
-
+    //Constructor
     public ExplorarFragment() {
     }
 
@@ -42,7 +41,7 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
+    //Pone el recyclerView con ayuda del adaptador en pantalla con onCLick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +49,7 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
         context=this;
         //Crear RecyclerView
         recyclerView=view.findViewById(R.id.recyclerView);
+        //OnClick navega hacia pantalla de MostrarActivity
         recyclerViewAdapter=new RandomListAdapter(new RandomListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Habitacion habitacion) {
@@ -60,6 +60,7 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
         });
         recyclerView.setAdapter(recyclerViewAdapter);
         hVM=new ViewModelProvider(context).get(HabitacionViewModel.class);
+        //Visualizar habitaciones
         hVM.obtenerHabitaciones().observe(getViewLifecycleOwner(),actualizarListHabitacionObserver);
         return view;
     }

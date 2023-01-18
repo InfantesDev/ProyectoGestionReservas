@@ -27,7 +27,11 @@ import com.example.proyectogestionreservas.viewmodel.ReservaViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Fragment Reservas con recyclerView de las reservas creadas
+ */
 public class ReservasFragment extends Fragment implements LifecycleOwner {
+    //Fragment context this
     ReservasFragment context;
     //RecyclerView añadido
     RecyclerView recyclerView;
@@ -36,7 +40,7 @@ public class ReservasFragment extends Fragment implements LifecycleOwner {
     //Listado
     List<Reserva> reservas;
     ReservaListAdapter recyclerViewAdapter;
-
+    //Constructor
     public ReservasFragment() {
     }
 
@@ -44,13 +48,14 @@ public class ReservasFragment extends Fragment implements LifecycleOwner {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
+    //Pone el recyclerView con ayuda del adaptador en pantalla con onCLick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reservas, container, false);
         context=this;
         recyclerView=view.findViewById(R.id.recyclerViewMisReservas);
+        //OnClick
         recyclerViewAdapter=new ReservaListAdapter(new ReservaListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Reserva reserva) {
@@ -59,11 +64,12 @@ public class ReservasFragment extends Fragment implements LifecycleOwner {
             }
         });
         recyclerView.setAdapter(recyclerViewAdapter);
+        //ViewModel reservas
         rVM=new ViewModelProvider(context).get(ReservaViewModel.class);
         rVM.obtenerReservas().observe(getViewLifecycleOwner(),actualizarListReservaObserver);
         return view;
     }
-
+    //Observer para actualizar la lista y insertar las reservas
     Observer<List<Reserva>> actualizarListReservaObserver=new Observer<List<Reserva>>() {
         @Override
         public void onChanged(List<Reserva> reservas) {

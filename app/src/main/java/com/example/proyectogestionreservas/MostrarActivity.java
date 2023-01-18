@@ -19,9 +19,13 @@ import com.example.proyectogestionreservas.viewmodel.ReservaViewModel;
 
 import java.util.Calendar;
 
+/**
+ * Activity Para Mostrar las descripciones de las habitaciones y para Realizar la reserva
+ */
 public class MostrarActivity extends AppCompatActivity {
 
-    private EditText dateEdtEntrada,dateEdtSalida;
+    //Datos
+    private EditText dateEdtEntrada,dateEdtSalida,textObservacion;
     private Button btnRealizarReserva,btnRealizarLlamada,btnAbrirMapa;
     ReservaViewModel reservaVM;
 
@@ -29,8 +33,10 @@ public class MostrarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar);
+        //Inicializar datos
         dateEdtEntrada=findViewById(R.id.editDateEntrada);
         dateEdtSalida=findViewById(R.id.editDateSalida);
+        textObservacion=findViewById(R.id.textDescHabi);
         btnRealizarReserva=findViewById(R.id.btnRealizarReserva);
         btnRealizarLlamada=findViewById(R.id.btnRealizarLlamadasHabi);
         btnAbrirMapa=findViewById(R.id.btnAbrirMapaHabi);
@@ -49,13 +55,18 @@ public class MostrarActivity extends AppCompatActivity {
                 //Inserta Reserva
                 String dEntrada=dateEdtEntrada.getText().toString();
                 String dSalida=dateEdtSalida.getText().toString();
-                if (dEntrada!=null&&dSalida!=null){
+                String observacion=textObservacion.getText().toString();
+                if (dEntrada!=null&&dSalida!=null||!(dEntrada.isEmpty()&&dSalida.isEmpty())){
                     reservaVM.guardarReserva(new Reserva(dEntrada,
-                            dSalida,"Nueva Reserva",1,2));
+                            dSalida,observacion,1,2));
+                    Toast.makeText(MostrarActivity.this,
+                            "Reserva Creada - Datos Reserva: "+dEntrada+" "+dSalida,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MostrarActivity.this,
+                            "Fallo en al Reservar - Fechas",
+                            Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(MostrarActivity.this,
-                        "Reserva Creada - Datos Reserva: "+dEntrada+" "+dSalida,
-                        Toast.LENGTH_SHORT).show();
             }
         });
         //DatePicker entrada
@@ -101,12 +112,6 @@ public class MostrarActivity extends AppCompatActivity {
             }
         });
 
-    }
-    //Insertar Reserva
-    public void guardarReserva(){
-        reservaVM.guardarReserva(new Reserva(dateEdtEntrada.getText().toString(),
-                dateEdtSalida.getText().toString(),"Nueva Reserva",0,0));
-        Toast.makeText(this, "Reserva Creada", Toast.LENGTH_SHORT).show();
     }
     //Realizar Llamada
     public void realizarLlamada(){

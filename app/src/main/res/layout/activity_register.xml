@@ -20,7 +20,6 @@
                 android:layout_gravity="top"
                 android:gravity="center"
                 android:orientation="horizontal" >
-
                 <TextView
                     android:id="@+id/textTitleRegister1"
                     android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
                     android:textSize="50dp"
                     android:textColor="@color/white"
                     android:text="Hotel " />
-
                 <TextView
                     android:id="@+id/textTitleRegister2"
                     android:layout_width="wrap_content"
@@ -43,7 +41,7 @@
                 android:id="@+id/textDescRegister"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginEnd="48dp"
                 android:gravity="center"
@@ -54,13 +52,58 @@
                 android:id="@+id/editUserRegister"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginEnd="48dp"
                 android:background="@drawable/background_edit"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:hint="Usuario"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:id="@+id/editApellidoRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Apellido"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:id="@+id/editDniRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="DNI"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTelefonoRegister"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/background_edit"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Telefono"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"/>

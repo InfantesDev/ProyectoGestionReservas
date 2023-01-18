@@ -13,8 +13,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@mipmap/ic_imageappregisterlogin_foreground"/>
-    
+        android:background="@drawable/androidhabitacion1"/>
+
     <ScrollView
         android:id="@+id/mostrar_scroll"
         android:layout_width="0dp"
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
-    
+
                 <RatingBar
                     android:id="@+id/ratingMostrar"
                     style="?android:attr/ratingBarStyleSmall"
@@ -117,9 +117,9 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-black"
                 android:alpha="0.5"
-                android:text="Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum
-Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum
-Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum"
+                android:text="La habitacion cuenta con una cama grande
+y con un baño, tiene una pequeña mesita. La habitacion da vistas al valle,
+donde se puede ver montañas."
                 android:textColor="@color/white"
                 android:textSize="15sp"/>
             <TextView
@@ -178,7 +178,8 @@ Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum Lorem Ipsum Sum Sum"
                 android:layout_marginTop="30dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Si quiere hacer una reserva tendra que dar la fecha inicial y
-la de salida y darle al boton Realizar Reserva"
+la de salida y darle al boton Realizar Reserva, tambien puede escribir una
+observacion."
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:textSize="17sp"/>
@@ -209,6 +210,20 @@ la de salida y darle al boton Realizar Reserva"
                         android:focusableInTouchMode="false"
                         android:hint="Fecha Salida"/>
                 </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <EditText
+                    android:id="@+id/textDescHabi"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:textColor="#999999"
+                    android:textSize="17sp"/>
+            </LinearLayout>
             <Button
                 android:id="@+id/btnRealizarReserva"
                 android:layout_width="match_parent"

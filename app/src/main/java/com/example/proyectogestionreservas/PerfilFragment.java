@@ -71,16 +71,16 @@ public class PerfilFragment extends Fragment {
     //Guardar Habitacion
     public void guardarHabitacion(){
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Pequeña 1",
-                "Descripcion",20.3, R.drawable.ic_search_foreground));
+                "Descripcion",20.3, R.drawable.androidhabitacion1));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Pequeña 2",
-                "Descripcion",20.3, R.drawable.ic_profile_foreground));
+                "Descripcion",20.3, R.drawable.androidhabitacion2));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Mediana 1",
-                "Descripcion",30.3, R.drawable.ic_search_foreground));
+                "Descripcion",30.3, R.drawable.androidhabitacion3));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Mediana 2",
-                "Descripcion",30.3, R.drawable.ic_task_foreground));
+                "Descripcion",30.3, R.drawable.androidhabitacion4));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Grande 1",
-                "Descripcion",40.3, R.drawable.ic_search_foreground));
+                "Descripcion",40.3, R.drawable.androidhabitacion5));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Grande 2",
-                "Descripcion",40.3, R.drawable.ic_task_foreground));
+                "Descripcion",40.3, R.drawable.androidhabitacion6));
     }
 }

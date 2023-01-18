@@ -15,20 +15,25 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Adaptor de para listar las reservas con el card
+ */
 public class ReservaListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    //Interfaz necesaria para el onClick
     public interface OnItemClickListener {
         void onItemClick(Reserva reserva);
     }
-
+    //Datos
     private final OnItemClickListener listener;
     private List<Reserva> reservas;
-
+    //Constructor
     public ReservaListAdapter(OnItemClickListener listener) {
         this.reservas=new ArrayList<Reserva>();
         this.listener=listener;
     }
 
+    //Layout reserva card
     @Override
     public int getItemViewType(final int position) {
         return R.layout.reserva_frame_card;
@@ -41,6 +46,7 @@ public class ReservaListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return new RecyclerViewViewHolder(view);
     }
 
+    //Datos card reserva
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Reserva reserva = reservas.get(position);
@@ -57,17 +63,20 @@ public class ReservaListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         viewHolder.bind(reserva, listener);
     }
 
+    //Tamaño de la lista reservas
     @Override
     public int getItemCount() {
         return reservas.size();
     }
 
+    //Actualiza la lista por si se han metido nuevas insercciones
     public void actualizarListaUsuarioReserva(final List<Reserva> reservaListado){
         this.reservas.clear();
         this.reservas=reservaListado;
         notifyDataSetChanged();
     }
 
+    //Clase necesaria para poder coger los datos de reserva card
     static class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
         TextView descripcion,textDateEntrada,textDateSalida,textTitle,
                 textTitleDateEntrada,textTitleDateSalida,textTitleHabi,textHabiNum,textIdReserva;

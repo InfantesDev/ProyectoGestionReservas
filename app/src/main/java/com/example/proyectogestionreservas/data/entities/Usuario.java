@@ -18,9 +18,21 @@ public class Usuario {
     @ColumnInfo(name="password")
     private String password;
 
-    public Usuario(String nombreUsuario, String password) {
+    @ColumnInfo(name = "dni")
+    private String dni;
+
+    @ColumnInfo(name = "apellido")
+    private String apellido;
+
+    @ColumnInfo(name = "telefono")
+    private String telefono;
+
+    public Usuario(String nombreUsuario, String password, String dni, String apellido, String telefono) {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
+        this.dni=dni;
+        this.apellido=apellido;
+        this.telefono=telefono;
     }
 
     @NonNull
@@ -41,5 +53,23 @@ public class Usuario {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getDni() {
+        return dni;
+    }
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+    public String getApellido() {
+        return apellido;
+    }
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

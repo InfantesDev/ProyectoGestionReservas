@@ -21,18 +21,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
 
 /**
- * Activity Register
- *
+ * Activity Register Registra Usuarios
  */
 public class RegisterActivity extends AppCompatActivity {
-    EditText user, pass, passOtra;
+    EditText user, pass, passOtra, dni, apellido, telefono;
     Button btnRegistro;
     TextView btnRegistroToLogin;
     ActivityRegisterBinding binding;
-    AppDataBase myDataBase;
-    UsuarioDao usuarioDao;
     UsuarioViewModel usuarioVM;
-    public static boolean isPermitido=false;
 
     //TODO Hacer validacion contraseña segura
     public boolean validacion(){
@@ -56,16 +52,16 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot()); //R.layout.activity_register
-
-
+        //Inicializar datos
         user=findViewById(R.id.editUserRegister);
         pass=findViewById(R.id.editPasswordRegister);
         passOtra=findViewById(R.id.editPasswordAgainRegister);
+        dni=findViewById(R.id.editDniRegister);
+        apellido=findViewById(R.id.editApellidoRegister);
+        telefono=findViewById(R.id.editTelefonoRegister);
         btnRegistro=findViewById(R.id.btnRegister);
         btnRegistroToLogin=findViewById(R.id.btnRegistroToLogin);
-
-        //Forma de guardar mas de un usuario
-        // VIEW MODEL PARA OBSERVAR LOS DATOS
+        //Nos traemos los datos con el viewModel
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         usuarioVM = new ViewModelProvider(this, (ViewModelProvider.Factory) factory).get(UsuarioViewModel.class);
@@ -85,11 +81,17 @@ public class RegisterActivity extends AppCompatActivity {
     }
     //Forma de guardar mas de un usuario
     //Guardar Usuario
-    //TODO Hacer validacion
     public void guardarUsuario(){
-        String nombreUsuario=user.getText().toString();
-        String passwordUsuario=pass.getText().toString();
-        usuarioVM.guardarUsuario(new Usuario(nombreUsuario, passwordUsuario));
-        Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
+        if (validacion()){
+            String nombreUsuario=user.getText().toString();
+            String passwordUsuario=pass.getText().toString();
+            String dniUsuario=dni.getText().toString();
+            String apellidoUsuario=apellido.getText().toString();
+            String telefonoUsuario=telefono.getText().toString();
+            usuarioVM.guardarUsuario(new Usuario(nombreUsuario, passwordUsuario,dniUsuario,apellidoUsuario,telefonoUsuario));
+            Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Usuario No Registrado", Toast.LENGTH_LONG).show();
+        }
     }
 }
