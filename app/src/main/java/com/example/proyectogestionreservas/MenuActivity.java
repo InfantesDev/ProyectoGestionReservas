@@ -1,5 +1,6 @@
 package com.example.proyectogestionreservas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +28,10 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         binding=ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("user");
+        Bundle bundle = new Bundle();
+        bundle.putString("usuario",message);
         replaceFragment(new ExplorarFragment());
         //Menu Bottom Nav
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -38,7 +43,9 @@ public class MenuActivity extends AppCompatActivity {
                     replaceFragment(new ReservasFragment());
                     break;
                 case R.id.profile:
-                    replaceFragment(new PerfilFragment());
+                    PerfilFragment pFragment = new PerfilFragment();
+                    pFragment.setArguments(bundle);
+                    replaceFragment(pFragment);
                     break;
             }
             return true;

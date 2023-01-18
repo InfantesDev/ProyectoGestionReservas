@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectogestionreservas.data.entities.Habitacion;
@@ -21,6 +22,7 @@ import com.example.proyectogestionreservas.viewmodel.HabitacionViewModel;
 public class PerfilFragment extends Fragment {
 
     Button btnAnyadir, btnLlamada, btnMapa;
+    TextView textNombreUser;
     HabitacionViewModel habitacionVM;
     public PerfilFragment() {
     }
@@ -34,9 +36,12 @@ public class PerfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_perfil, container, false);
+        String userText=getArguments().getString("usuario");
         btnAnyadir=view.findViewById(R.id.btnHabitaciones);
         btnLlamada=view.findViewById(R.id.btnRealizarLlamadas);
         btnMapa=view.findViewById(R.id.btnAbrirMapa);
+        textNombreUser=view.findViewById(R.id.textNamePerfil);
+        textNombreUser.setText(userText);
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication());
         habitacionVM = new ViewModelProvider(this, (ViewModelProvider.Factory) factory).get(HabitacionViewModel.class);
@@ -73,14 +78,14 @@ public class PerfilFragment extends Fragment {
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Pequeña 1",
                 "Descripcion",20.3, R.drawable.androidhabitacion1));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Pequeña 2",
-                "Descripcion",20.3, R.drawable.androidhabitacion2));
+                "Descripcion",20.3, R.drawable.androidhabitacion1));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Mediana 1",
-                "Descripcion",30.3, R.drawable.androidhabitacion3));
+                "Descripcion",30.3, R.drawable.androidhabitacion1));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Mediana 2",
-                "Descripcion",30.3, R.drawable.androidhabitacion4));
+                "Descripcion",30.3, R.drawable.androidhabitacion1));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Grande 1",
-                "Descripcion",40.3, R.drawable.androidhabitacion5));
+                "Descripcion",40.3, R.drawable.androidhabitacion1));
         habitacionVM.guardarHabitacion(new Habitacion("Habitacion Grande 2",
-                "Descripcion",40.3, R.drawable.androidhabitacion6));
+                "Descripcion",40.3, R.drawable.androidhabitacion1));
     }
 }
