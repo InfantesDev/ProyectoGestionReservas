@@ -46,8 +46,6 @@ public class MostrarActivity extends AppCompatActivity {
         //Set Texto
         Intent intent1 = getIntent();
         String nombreHabi = intent1.getStringExtra("habitacionNombre");
-        String idHabiString = intent1.getStringExtra("habitacionId");
-        int idHabi = Integer.parseInt(idHabiString);
         textTitle.setText(nombreHabi);
         //Inicializar ViewModel/ViewModelProvider
         ViewModelProvider.AndroidViewModelFactory factory =
@@ -67,7 +65,7 @@ public class MostrarActivity extends AppCompatActivity {
                 String observacion=textObservacion.getText().toString();
                 if (!dEntrada.equals("")&&!dSalida.equals("")){
                     reservaVM.guardarReserva(new Reserva(dEntrada,
-                            dSalida,observacion,1,idHabi));
+                            dSalida,observacion,1,2));
                     Toast.makeText(MostrarActivity.this,
                             "Reserva Creada - Datos Reserva: "+dEntrada+" "+dSalida,
                             Toast.LENGTH_SHORT).show();
