@@ -53,8 +53,8 @@ public class ReservaListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         RecyclerViewViewHolder viewHolder=(RecyclerViewViewHolder) holder;
         viewHolder.getTextTitle().setText("Habitacion Reservada");
         viewHolder.getTextIdReserva().setText("#"+reserva.getIdReserva());
-        viewHolder.getTextTitleHabi().setText("Habitacion Mediana");
-        viewHolder.getTextHabiNum().setText("#"+reserva.getIdHabitacion());
+        viewHolder.getTextTitleHabi().setText("Habitacion Numero");
+        viewHolder.getTextHabiNum().setText(reserva.getIdHabitacion());
         viewHolder.getDescripcion().setText(reserva.getObservaciones());
         viewHolder.getTitleDateEntrada().setText("Fecha Entrada:");
         viewHolder.getTitleDateSalida().setText("Fecha Salida:");

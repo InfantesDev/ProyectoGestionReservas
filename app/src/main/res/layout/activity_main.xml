@@ -50,7 +50,7 @@
                 android:layout_marginEnd="48dp"
                 android:gravity="center"
                 android:textSize="20dp"
-                android:text="Hotel Rural es una de las mejores apps para hacer reservas" />
+                android:text="Hotel Rural es uno de los mejores hoteles para hacer reservas" />
 
             <EditText
                 android:id="@+id/editUser"

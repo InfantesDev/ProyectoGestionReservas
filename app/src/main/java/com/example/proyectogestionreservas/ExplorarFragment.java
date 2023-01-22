@@ -54,6 +54,8 @@ public class ExplorarFragment extends Fragment implements LifecycleOwner{
             @Override
             public void onItemClick(Habitacion habitacion) {
                 Intent intent = new Intent(getActivity(), MostrarActivity.class);
+                intent.putExtra("habitacionNombre", habitacion.getNombre());
+                intent.putExtra("habitacionId", habitacion.getIdHabitacion());
                 startActivity(intent);
                 Toast.makeText(getContext(), "Click Habitacion", Toast.LENGTH_LONG).show();
             }

@@ -41,7 +41,7 @@ public class PerfilFragment extends Fragment {
         btnLlamada=view.findViewById(R.id.btnRealizarLlamadas);
         btnMapa=view.findViewById(R.id.btnAbrirMapa);
         textNombreUser=view.findViewById(R.id.textNamePerfil);
-        textNombreUser.setText(userText);
+        textNombreUser.setText(userText+" ");
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication());
         habitacionVM = new ViewModelProvider(this, (ViewModelProvider.Factory) factory).get(HabitacionViewModel.class);
@@ -64,8 +64,7 @@ public class PerfilFragment extends Fragment {
     }
     //Localizacion Hotel
     public void mostrarLocalizacion(){
-        //TODO Coger un localizacion de un hotel
-        Uri location = Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway,+Mountain+View,+California");
+        Uri location = Uri.parse("geo:0,0?q=03310+Jacarilla,+Alicante,+Spain");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
         try {
             startActivity(mapIntent);

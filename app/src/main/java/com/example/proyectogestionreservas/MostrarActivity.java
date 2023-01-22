@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectogestionreservas.data.entities.Reserva;
@@ -26,6 +27,7 @@ public class MostrarActivity extends AppCompatActivity {
 
     //Datos
     private EditText dateEdtEntrada,dateEdtSalida,textObservacion;
+    private TextView textTitle;
     private Button btnRealizarReserva,btnRealizarLlamada,btnAbrirMapa;
     ReservaViewModel reservaVM;
 
@@ -40,6 +42,13 @@ public class MostrarActivity extends AppCompatActivity {
         btnRealizarReserva=findViewById(R.id.btnRealizarReserva);
         btnRealizarLlamada=findViewById(R.id.btnRealizarLlamadasHabi);
         btnAbrirMapa=findViewById(R.id.btnAbrirMapaHabi);
+        textTitle=findViewById(R.id.mostrar_titulo);
+        //Set Texto
+        Intent intent1 = getIntent();
+        String nombreHabi = intent1.getStringExtra("habitacionNombre");
+        String idHabiString = intent1.getStringExtra("habitacionId");
+        int idHabi = Integer.parseInt(idHabiString);
+        textTitle.setText(nombreHabi);
         //Inicializar ViewModel/ViewModelProvider
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
@@ -56,9 +65,9 @@ public class MostrarActivity extends AppCompatActivity {
                 String dEntrada=dateEdtEntrada.getText().toString();
                 String dSalida=dateEdtSalida.getText().toString();
                 String observacion=textObservacion.getText().toString();
-                if (dEntrada!=null&&dSalida!=null||!(dEntrada.isEmpty()&&dSalida.isEmpty())){
+                if (!dEntrada.equals("")&&!dSalida.equals("")){
                     reservaVM.guardarReserva(new Reserva(dEntrada,
-                            dSalida,observacion,1,2));
+                            dSalida,observacion,1,idHabi));
                     Toast.makeText(MostrarActivity.this,
                             "Reserva Creada - Datos Reserva: "+dEntrada+" "+dSalida,
                             Toast.LENGTH_SHORT).show();
@@ -121,8 +130,7 @@ public class MostrarActivity extends AppCompatActivity {
     }
     //Localizacion Hotel
     public void mostrarLocalizacion(){
-        //TODO Coger un localizacion de un hotel
-        Uri location = Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway,+Mountain+View,+California");
+        Uri location = Uri.parse("geo:0,0?q=03310+Jacarilla,+Alicante,+Spain");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
         try {
             startActivity(mapIntent);

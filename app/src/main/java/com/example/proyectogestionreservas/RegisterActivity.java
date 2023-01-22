@@ -36,7 +36,10 @@ public class RegisterActivity extends AppCompatActivity {
         String userName = user.getText().toString();
         String userPass = pass.getText().toString();
         String userPassOtra = passOtra.getText().toString();
-        if (userName.isEmpty()){
+        String userDni=dni.getText().toString();
+        String userApellido=apellido.getText().toString();
+        String userTelefono=telefono.getText().toString();
+        if (userName.isEmpty()&&userDni.isEmpty()&&userApellido.isEmpty()&&userTelefono.isEmpty()){
             valid=false;
         }
         if (userPass.isEmpty() || userPass.length()<4 || userPass.length()>10){
