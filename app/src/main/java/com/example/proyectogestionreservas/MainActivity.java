@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     //Pasar datos con intent
                     intent.putExtra("user",nombreUsuario);
                     startActivity(intent);
+                    finish();
                     //startActivity(new Intent(MainActivity.this, MenuActivity.class));
                 } else {
                     Toast.makeText(MainActivity.this, "Nombre Usuario o Contraseña Fallida", Toast.LENGTH_SHORT).show();
